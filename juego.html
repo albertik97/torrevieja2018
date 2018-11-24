@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html lang="es">
+<head>
+<title>OpenLayers Simplest Example</title>
+<meta charset="utf-8">
+<script src="./OpenLayers/OpenLayers.js"></script>
+<body>
+  <div id="demoMap" style="height:250px"></div>
+</body>
+<script>
+var pos;
+  if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+           pos = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude
+          };
+
+
+              map = new OpenLayers.Map("demoMap");
+              var mapnik         = new OpenLayers.Layer.OSM();
+                  var fromProjection = new OpenLayers.Projection("EPSG:4326");   // Transform from WGS 1984
+                  var toProjection   = new OpenLayers.Projection("EPSG:900913"); // to Spherical Mercator Projection
+                  var position       = new OpenLayers.LonLat(pos.lng,pos.lat).transform( fromProjection, toProjection);
+                  var zoom           = 15;
+
+                  map.addLayer(mapnik);
+                  map.setCenter(position, zoom );
+
+        }, function() {
+        //  handleLocationError(true, infoWindow, map.getCenter());
+        });
+      } else {
+        // Browser doesn't support Geolocation
+      //  handleLocationError(false, infoWindow, map.getCenter());
+      }
+
+
+</script>
+</html>
