@@ -10,8 +10,9 @@
       <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
       <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+      <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=requestAnimationFrame,Element.prototype.classList,URL"></script>
 <script src="./OpenLayers/OpenLayers.js"></script>
-<body onload="start();">
+<body onload="start(); startStory();">
   <ul class="nav justify-content-end bg-dark">
       <li class="nav-item">
     <img  class="otro" src="./amarillo2.png" alt="" width="25px" height="25px">
@@ -30,9 +31,9 @@
   <div id="demoMap">
   </div>
 
-<div class="info pista">
-  Pista 1: bla vla vaomdamdsakdak
+<div id="texto" class="info pista">
 </div>
+<button class="next" type="button" name="button" onclick="next();">Siguiente</button>
 <script>
 var pos;
   if (navigator.geolocation) {
@@ -42,19 +43,45 @@ var pos;
             lng: position.coords.longitude
           };
 
+
+   var figura1 =
+   {
+     "figura" :"1",
+     "lat" : "37.9744",
+     "lon" : "-0.67697"
+   };
+  var figura2 = {
+     "figura" :"2",
+     "lat" : "37.9742",
+     "lon" : "-0.677895"
+   };
+   var figura3 ={
+     "figura" :"3",
+     "lat" : "37.9689",
+     "lon" : "-0.680497"
+   };
+
               map = new OpenLayers.Map("demoMap");
               var mapnik         = new OpenLayers.Layer.OSM();
                   var fromProjection = new OpenLayers.Projection("EPSG:4326");   // Transform from WGS 1984
                   var toProjection   = new OpenLayers.Projection("EPSG:900913"); // to Spherical Mercator Projection
                   var position       = new OpenLayers.LonLat(pos.lng,pos.lat).transform( fromProjection, toProjection);
                   var zoom           = 15;
+                  console.log(figura1.lon)
+                  var position2      = new OpenLayers.LonLat(figura1.lon,figura1.lat).transform( fromProjection, toProjection);
+                  var position3      = new OpenLayers.LonLat(figura2.lon,figura2.lat).transform( fromProjection, toProjection);
+                  var position4      = new OpenLayers.LonLat(figura3.lon,figura3.lat).transform( fromProjection, toProjection);
 
                   map.addLayer(mapnik);
-                  map.setCenter(position, zoom);
+                  map.setCenter(position2, zoom);
 
                   var markers = new OpenLayers.Layer.Markers( "Markers" );
+
                   map.addLayer(markers);
                   markers.addMarker(new OpenLayers.Marker(position));
+                  markers.addMarker(new OpenLayers.Marker(position2));
+                  markers.addMarker(new OpenLayers.Marker(position3));
+                  markers.addMarker(new OpenLayers.Marker(position4));
 
         }, function() {
         //  handleLocationError(true, infoWindow, map.getCenter());
