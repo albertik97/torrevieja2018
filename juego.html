@@ -1,12 +1,38 @@
 <!DOCTYPE HTML>
 <html lang="es">
 <head>
-<title>OpenLayers Simplest Example</title>
+<title>Juego</title>
 <meta charset="utf-8">
+    <script type="text/javascript" src="./script.js" ></script>
+    <link rel="stylesheet" href="./style.css">
+     <link href="https://fonts.googleapis.com/css?family=Black+Han+Sans" rel="stylesheet">
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 <script src="./OpenLayers/OpenLayers.js"></script>
-<body>
-  <div id="demoMap" style="height:250px"></div>
-</body>
+<body onload="start();">
+  <ul class="nav justify-content-end bg-dark">
+      <li class="nav-item">
+    <img  class="otro" src="./amarillo2.png" alt="" width="25px" height="25px">
+    </li>
+    <li class="nav-item">
+      <a class="nav-link text-white" href="">0 pts</a>
+      </li>
+    <li class="nav-item">
+      <a class="nav-link text-white" href=""><div id="number"></div></a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link active" href="./index.html">Salir</a>
+    </li>
+
+  </ul>
+  <div id="demoMap">
+  </div>
+
+<div class="info pista">
+  Pista 1: bla vla vaomdamdsakdak
+</div>
 <script>
 var pos;
   if (navigator.geolocation) {
@@ -16,7 +42,6 @@ var pos;
             lng: position.coords.longitude
           };
 
-
               map = new OpenLayers.Map("demoMap");
               var mapnik         = new OpenLayers.Layer.OSM();
                   var fromProjection = new OpenLayers.Projection("EPSG:4326");   // Transform from WGS 1984
@@ -25,7 +50,11 @@ var pos;
                   var zoom           = 15;
 
                   map.addLayer(mapnik);
-                  map.setCenter(position, zoom );
+                  map.setCenter(position, zoom);
+
+                  var markers = new OpenLayers.Layer.Markers( "Markers" );
+                  map.addLayer(markers);
+                  markers.addMarker(new OpenLayers.Marker(position));
 
         }, function() {
         //  handleLocationError(true, infoWindow, map.getCenter());
