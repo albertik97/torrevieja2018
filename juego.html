@@ -139,11 +139,11 @@ function actualizar(){
           if((pos.lat>37.9740 || pos.lat<37.9748)&&(pos.lng>-0.680493 || pos.lng<-0.680485 ) ){
             var l = document.getElementById("texto");
 
-            l.innerHTML='<button type="button" class="btn btn-info" onclick="share();">Twitear(+100pts)</button>';
+            l.innerHTML='<button type="button" class="btn btn-info share" onclick="share();">Twitear(+100pts)</button>';
           }
       })
     }
-      ,500);
+      ,10000);
 }
 
 function share(){
