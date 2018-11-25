@@ -76,6 +76,7 @@ var icon = new OpenLayers.Icon('http://freeiconbox.com/icon/256/17447.png', size
   var position2      = new OpenLayers.LonLat(figura1.lon,figura1.lat).transform( fromProjection, toProjection);
   var position3      = new OpenLayers.LonLat(figura2.lon,figura2.lat).transform( fromProjection, toProjection);
   var position4      = new OpenLayers.LonLat(figura3.lon,figura3.lat).transform( fromProjection, toProjection);
+  var positionfake      = new OpenLayers.LonLat(-0.677895,37.9740).transform( fromProjection, toProjection);
   var zoom           = 15;
 var position="";
   if (navigator.geolocation) {
@@ -129,14 +130,17 @@ var position="";
         cont++;
          l.innerHTML = historia[cont];
          if(cont==1){
-         markers.addMarker(new OpenLayers.Marker(position2));
+           markers.addMarker(new OpenLayers.Marker(positionfake,icon));
+          markers.addMarker(new OpenLayers.Marker(position2));
            map.setCenter(position2, zoom);
+
          }
 
          if(cont==2){
            markers.clearMarkers();
 
            markers.addMarker(new OpenLayers.Marker(position3));
+            m
              map.setCenter(position3, zoom);
          }
 
@@ -159,14 +163,15 @@ function actualizar(){
           };
             position       = new OpenLayers.LonLat(pos.lng,pos.lat).transform( fromProjection, toProjection);
           markers.addMarker(new OpenLayers.Marker(position,icon));
-          if((pos.lat>37.9740 && pos.lat<37.9748)&&(pos.lng>-0.680493 && pos.lng<-0.680485 )&&cont==1 ){
+          markers.addMarker(new OpenLayers.Marker(positionfake,icon));
+          if((pos.lat>37.9740 || pos.lat<37.9748)&&(pos.lng>-0.680493 || pos.lng<-0.680485 )&&cont==1 ){
             var l = document.getElementById("texto");
 
             l.innerHTML='<button type="button" class="btn btn-info share" onclick="share();">Twitear(+100pts)</button>';
           }
       })
     }
-      ,1000);
+      ,10000);
 }
 
 function share(){
