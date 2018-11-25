@@ -133,13 +133,19 @@ var position="";
          if(cont==2){
           //  position       = new OpenLayers.LonLat(pos.lng,pos.lat).transform( fromProjection, toProjection);
            markers.clearMarkers();
-           markers.addMarker(new OpenLayers.Marker(position));
+
            markers.addMarker(new OpenLayers.Marker(position3));
+             map.setCenter(position3, zoom);
          }
 
          if(cont==3){
-           mostrarVentana();
+           markers.clearMarkers();
+            markers.addMarker(new OpenLayers.Marker(position4));
+            map.setCenter(position4, zoom);
          }
+         if(cont==4){
+            mostrarVentana();
+          }
       }
 function actualizar(){
       window.setInterval(function(){
