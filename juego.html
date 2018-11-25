@@ -13,7 +13,7 @@
       <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
       <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=requestAnimationFrame,Element.prototype.classList,URL"></script>
 <script src="./OpenLayers/OpenLayers.js"></script>
-<body onload="start(); startStory(); actualizar();">
+<body onload="start(); startStory(); actualizar(); ocultarVentana();">
   <ul class="nav justify-content-end bg-dark">
       <li class="nav-item">
     <img  class="otro" src="./amarillo2.png" alt="" width="25px" height="25px">
@@ -34,7 +34,17 @@
 
 <div id="texto" class="info pista bg-dark">
 </div>
+
 <button class="btn btn-success next" type="button" name="button" onclick="next();">Siguiente</button>
+<div id="miVentana" class="container text-center bg-dark">
+<h2 class="text-white">¡Enhorabuena has completado el desafio con 600 pts!</h2>
+<p>Premio:</p>
+  <img src="./tren.jpg" alt="" width="90%" height="40%" style="border-radius: 50%;">
+<h3 class="text-white">¡Viaje Gratis en el tren!</h3>
+<h4 class="text-white">Codigo: BN34W7</h4>
+<br>
+<button type="button" name="button" class="btn btn-info"onclick="ocultarVentana();">cerrar</button>
+</div>
 <script>
   var figura1 = {
     "figura" :"1",
@@ -126,6 +136,10 @@ var position="";
            markers.addMarker(new OpenLayers.Marker(position));
            markers.addMarker(new OpenLayers.Marker(position3));
          }
+
+         if(cont==3){
+           mostrarVentana();
+         }
       }
 function actualizar(){
       window.setInterval(function(){
@@ -136,7 +150,7 @@ function actualizar(){
           };
             position       = new OpenLayers.LonLat(pos.lng,pos.lat).transform( fromProjection, toProjection);
           markers.addMarker(new OpenLayers.Marker(position,icon));
-          if((pos.lat>37.9740 || pos.lat<37.9748)&&(pos.lng>-0.680493 || pos.lng<-0.680485 ) ){
+          if((pos.lat>37.9740 && pos.lat<37.9748)&&(pos.lng>-0.680493 && pos.lng<-0.680485 ) ){
             var l = document.getElementById("texto");
 
             l.innerHTML='<button type="button" class="btn btn-info share" onclick="share();">Twitear(+100pts)</button>';
@@ -152,6 +166,18 @@ function share(){
   var l = document.getElementById("puntos");
    l.innerHTML = puntuacion +" pts";
 
+}
+
+function mostrarVentana()
+{
+    var ventana = document.getElementById('miVentana');
+    ventana.style.display = 'block';
+}
+
+function ocultarVentana()
+{
+    var ventana = document.getElementById('miVentana');
+    ventana.style.display = 'none';
 }
 </script>
 </html>
