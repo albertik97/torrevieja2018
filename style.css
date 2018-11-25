@@ -50,6 +50,12 @@ font-family: 'Acme', sans-serif;
   opacity: 1;
 }
 
+#but{
+
+  display: inline-block;
+  text-align: center;
+}
+
 .login{
   padding-top: 100%;
 }
@@ -85,6 +91,10 @@ i{
   z-index: 3000;
 }
 
+#ye{
+  display: block;
+  margin: auto;
+}
 #miVentana{
   position: absolute;
   width: 100%;
