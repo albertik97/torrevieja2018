@@ -23,7 +23,7 @@ body{
   height: 150px;
   background-color: rgb(0, 148, 68);
   font-size: 1em;
-  opacity 3.5s;
+  opacity: 3.5s;
 }
 
 .time{
@@ -107,4 +107,56 @@ margin: 0;
 left: 0;
 opacity: 0.95;
 font-family: 'Acme', sans-serif;
+}
+
+#sal, #mi, .text-yellow{
+
+  color: #E1DA1B;
+
+}
+.text-yellow, .text-white{
+  margin: 1em;
+}
+
+h3{
+  text-align: center;
+
+}
+
+select.list1 option.option2 option.option1 option.option3
+{
+    background-color: yellow;
+}
+
+#centrar{
+  text-align: center;
+  background-color: #343a40 !important;
+  color: white;
+  padding: 1em;
+  border-radius: 10% !important;
+  font-size: 1.4em;
+}
+.centrar{
+  text-align: center;
+  margin: 0.5em;
+}
+
+.card-header{
+  background-color: #343a40 !important;
+}
+
+h5{
+  color: #343a40 !important;
+}
+hr{
+  padding:  0 !important;
+
+}
+
+#cosita{
+  border-radius: 4% !important;
+}
+
+.lie{
+  text-align: center;
 }
