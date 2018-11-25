@@ -115,7 +115,7 @@ font-family: 'Acme', sans-serif;
 
 }
 .text-yellow, .text-white{
-  margin: 1em;
+ margin:.1em;
 }
 
 h3{
