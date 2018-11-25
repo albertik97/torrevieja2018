@@ -13,7 +13,7 @@
       <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
       <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=requestAnimationFrame,Element.prototype.classList,URL"></script>
 <script src="./OpenLayers/OpenLayers.js"></script>
-<body onload="start(); startStory(); actualizar(); ocultarVentana();">
+<body onload="start(); startStory(); actualizar();">
   <ul class="nav justify-content-end bg-dark">
       <li class="nav-item">
     <img  class="otro" src="./amarillo2.png" alt="" width="25px" height="25px">
@@ -36,7 +36,7 @@
 </div>
 
 <button class="btn btn-success next" type="button" name="button" onclick="next();">Siguiente</button>
-<div id="miVentana" class="container text-center bg-dark">
+<div id="miVentana" class="container text-center bg-dark" style="display:none">
 <h2 class="text-white">¡Enhorabuena has completado el desafio con 600 pts!</h2>
 <p>Premio:</p>
   <img src="./tren.jpg" alt="" width="90%" height="40%" style="border-radius: 50%;">
@@ -166,7 +166,7 @@ function actualizar(){
           }
       })
     }
-      ,10000);
+      ,1000);
 }
 
 function share(){
@@ -186,7 +186,7 @@ function ocultarVentana()
 {
     var ventana = document.getElementById('miVentana');
     ventana.style.display = 'none';
-    window.open('./reto.html');
+    window.location.href='./reto.html';
 }
 </script>
 </html>
