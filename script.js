@@ -33,19 +33,3 @@ function start(){
   },1000);
 
 }
-var cont=0;
-var historia={
-  "0":"Hola, bienvenidos a Torrevieja, una ciudad que esconde mucho más de lo que crees. ¿Estas preparado para la historia de la bella lola?",
-  "1":"suuuh",
-}
-
-function startStory(){
-  var l = document.getElementById("texto");
-   l.innerHTML = historia[cont];
-}
-
-function next(){
-  var l = document.getElementById("texto");
-  cont++;
-   l.innerHTML = historia[cont];
-}
