@@ -115,7 +115,7 @@ var position="";
         "0":"Hola, bienvenidos a Torrevieja, una ciudad alicantina que esconde mucho más de lo que crees. ¿Estás preparado para la historia de la bella Lola?",
 
         "1":"Lo primero que debes hacer es dirigirte al paseo marítimo Juan Aparicio. Allí veras algo que te llamará la atención. Acércate.",
-        "2":"Enhorabuena! Ahora sigue disfrutando por el paseo marítimo que muy cerca de tí, darás con algo muy llamativo también",
+        "2":"Enhorabuena! Ahora sigue disfrutando por el paseo marítimo que esta muy cerca de tí, darás con algo muy llamativo también",
         "3":"Genial! Ve hacia el puerto, verás una figura que te resultará reconocible. Acércate a ella"
       }
 
@@ -127,7 +127,6 @@ var position="";
       function next(){
         var l = document.getElementById("texto");
         cont++;
-        if(cont<=3){
          l.innerHTML = historia[cont];
          if(cont==1){
          markers.addMarker(new OpenLayers.Marker(position2));
@@ -135,11 +134,20 @@ var position="";
          }
 
          if(cont==2){
-          //  position       = new OpenLayers.LonLat(pos.lng,pos.lat).transform( fromProjection, toProjection);
            markers.clearMarkers();
 
            markers.addMarker(new OpenLayers.Marker(position3));
              map.setCenter(position3, zoom);
+         }
+
+         if(cont==3){
+           markers.clearMarkers();
+
+           markers.addMarker(new OpenLayers.Marker(position4));
+             map.setCenter(position4, zoom);
+         }
+         if(cont==4){
+           mostrarVentana();
          }
       }
 function actualizar(){
@@ -166,7 +174,6 @@ function share(){
   puntuacion+=100;
   var l = document.getElementById("puntos");
    l.innerHTML = puntuacion +" pts";
-
 }
 
 function mostrarVentana()
@@ -179,6 +186,7 @@ function ocultarVentana()
 {
     var ventana = document.getElementById('miVentana');
     ventana.style.display = 'none';
+    window.open('./reto.html');
 }
 </script>
 </html>
