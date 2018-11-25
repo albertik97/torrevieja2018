@@ -159,7 +159,7 @@ function actualizar(){
           };
             position       = new OpenLayers.LonLat(pos.lng,pos.lat).transform( fromProjection, toProjection);
           markers.addMarker(new OpenLayers.Marker(position,icon));
-          if((pos.lat>37.9740 && pos.lat<37.9748)&&(pos.lng>-0.680493 && pos.lng<-0.680485 ) ){
+          if((pos.lat>37.9740 && pos.lat<37.9748)&&(pos.lng>-0.680493 && pos.lng<-0.680485 )&&cont==1 ){
             var l = document.getElementById("texto");
 
             l.innerHTML='<button type="button" class="btn btn-info share" onclick="share();">Twitear(+100pts)</button>';
