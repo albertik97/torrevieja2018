@@ -19,7 +19,7 @@
     <img  class="otro" src="./amarillo2.png" alt="" width="25px" height="25px">
     </li>
     <li class="nav-item">
-      <a id="puntos" class="nav-link text-white" href=""></a>
+      <a id="puntos" class="nav-link text-white" href="">0 pts</a>
       </li>
     <li class="nav-item">
       <a class="nav-link text-white" href=""><div id="number"></div></a>
@@ -135,7 +135,7 @@ function actualizar(){
 }
 
 function share(){
-  window.open("https://twitter.com/intent/tweet?button_hashtag=RetoBellaLola&text=Primera%20estatua%20encontrada!!!","_target");
+  window.open("https://twitter.com/intent/tweet?button_hashtag=RetoBellaLola&text=Primera%20estatua%20encontrada!!!#hackeatudestino","_target");
   puntuacion+=100;
   var l = document.getElementById("puntos");
    l.innerHTML = puntuacion +" pts";
